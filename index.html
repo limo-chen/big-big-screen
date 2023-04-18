@@ -10,11 +10,10 @@
     <script>
       const clientWidth = document.documentElement.clientWidth;
       const clientHeight = document.documentElement.clientWidth;
-      const pageWidth =
+      window.pageWidth =
         clientWidth / clientHeight > 16 / 9
           ? clientHeight * (16 / 9)
           : clientWidth;
-
       // if (clientWidth / clientHeight > 16 / 9) {
       //   pageWidth = clientHeight * (16 / 9);
       // } else {
