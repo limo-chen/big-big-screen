@@ -1,4 +1,19 @@
 @import "../shared/helper";
+%legend {
+  height: px(40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-right: px(10);
+  > span {
+    display: inline-block;
+    width: px(16);
+    height: px(10);
+    border-radius: px(2);
+    margin: 0 px(10);
+  }
+}
 
 .home {
   flex: 1;
@@ -42,8 +57,9 @@
       border-radius: 4px;
       position: relative;
       box-shadow: 0 0 2px 0 #0e325f, inset 0 0 2px 0 #0e325f;
-      background: #0c1139;
+      background: #0f113a;
       &::before {
+        pointer-events: none;
         content: "";
         position: absolute;
         left: 0;
@@ -64,18 +80,45 @@
     }
     > .section2 {
       grid-area: box2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     > .section3 {
       grid-area: box3;
     }
     > .section4 {
       grid-area: box4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     > .section5 {
       grid-area: box5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      > .row1 {
+        height: px(317);
+      }
+      > .row2 {
+        height: px(317);
+      }
+      > .row3 {
+        height: px(455);
+      }
     }
     .确诊人数统计,
-    .疫情实时动态 {
+    .疫情实时动态,
+    .防疫人员分析,
+    .疫情时段分析,
+    .管控区防控人员体系,
+    .西部地区疫情防控监控地图,
+    .年龄段,
+    .病情类型统计,
+    .新增确诊街道统计,
+    .医用物资汇总,
+    .防控人员组成体系 {
       height: px(315);
       display: flex;
       flex-direction: column;
@@ -90,9 +133,195 @@
         padding: px(10) px(28);
         text-shadow: 0 0 px(3) white; /*标题下朦胧感*/
       }
+      .charts {
+        width: 100%;
+        flex: 1;
+        display: flex;
+      }
       .chart {
         flex: 1;
         width: 100%;
+      }
+    }
+    .防疫人员分析,
+    .疫情时段分析 {
+      height: px(363);
+    }
+    .chart11,
+    .chart12 {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      > .chart {
+        display: flex;
+        > .main {
+          flex: 1;
+        }
+      }
+      .legend {
+        @extend %legend;
+      }
+    }
+    .防控人员组成体系 {
+      > table {
+        margin-top: px(38);
+        border-collapse: collapse;
+        th,
+        td {
+          border: 1px solid #1a3671;
+        }
+        thead {
+          th {
+            height: px(70);
+            box-shadow: inset 0 0 px(60) 0 #1f3d85;
+          }
+        }
+        tbody {
+          td {
+            height: px(50);
+            width: px(84);
+            background: #1c2456;
+          }
+        }
+      }
+    }
+    .年龄段 {
+      display: flex;
+      flex-direction: column;
+      height: px(363);
+      > .charts {
+        padding: px(30);
+      }
+      &-图1,
+      &-图2,
+      &-图3 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      &-图1,
+      &-图2 {
+        .legend {
+          @extend %legend;
+          > span {
+            display: inline-block;
+            width: px(16);
+            height: px(10);
+            border-radius: px(2);
+            margin: 0 px(10);
+          }
+          .male {
+            background: #33a4fa;
+          }
+          .female {
+            background: #8d70f8;
+          }
+        }
+        .chart {
+          position: relative;
+          display: flex;
+          > .main {
+            flex: 1;
+          }
+          > .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #33a4fa;
+            font-size: px(40);
+            text-shadow: 0 0 px(20) #33a4fa;
+            font-weight: bold;
+          }
+        }
+      }
+      &-图2 {
+        width: px(290);
+        flex-shrink: 0;
+        .legend {
+          justify-content: flex-start;
+        }
+      }
+      &-图3 {
+        border: 1px solid #08397d;
+        h3 {
+          font-size: px(20);
+          color: #7ab6db;
+          margin-top: px(6);
+        }
+      }
+    }
+    .西部地区疫情防控监控地图 {
+      height: px(753);
+      background: transparent;
+      > .wrapper {
+        position: relative;
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .chart {
+          flex: 1;
+        }
+        .legend {
+          position: absolute;
+          top: px(40);
+          left: px(20);
+          display: flex;
+          align-items: center;
+          font-size: px(22);
+          padding: px(20) px(10) px(20) 0;
+          border-radius: 0;
+          .icon {
+            margin: 0 px(10);
+            display: inline-block;
+            width: px(16);
+            height: px(16);
+            border-radius: 50%;
+            background: #1cecd9;
+          }
+        }
+        .notes {
+          position: absolute;
+          bottom: px(10);
+          right: px(10);
+        }
+      }
+    }
+    .管控区防控人员体系,
+    .医用物资汇总 {
+      padding: 0 px(24);
+      > table {
+        width: 100%;
+        table-layout: fixed;
+        margin-top: px(25);
+        border-collapse: collapse;
+        th,
+        td {
+          border: 1px solid #1a3671;
+        }
+        thead {
+          th {
+            height: px(70);
+            box-shadow: inset 0 0 px(60) 0 #1f3d85;
+          }
+        }
+        tbody {
+          td {
+            height: px(50);
+            width: px(84);
+            background: #1c2456;
+          }
+        }
+      }
+    }
+    .医用物资汇总 {
+      > table {
+        tbody {
+          td {
+            height: px(26);
+          }
+        }
       }
     }
     .疫情实时动态 {
